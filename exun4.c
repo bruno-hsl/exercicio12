@@ -1,34 +1,34 @@
 #include <stdio.h>
 
-int main(){
-    int matriz[61][10];
-
-    for (int linha = 0; linha < 61; linha++){
-        for (int coluna = 0; coluna < 10; coluna++){
-            matriz[linha][coluna] = linha + coluna;
+void imprimir(int matriz[61][10]){
+    for(int i = 0; i < 61; i++){
+        for(int j = 0; j < 10; j++){
+        printf("%d\t", matriz[i][j]);
         }
-    }
-    
-    somarMatriz(matriz);
-    imprimir(matriz);
-    return 0;
-}
-
-void somarMatriz(int matriz[61][10]){
-    for (int coluna = 0; coluna < 10; coluna++){
-        int soma = 0;
-        for (int linha = 0; linha < 61; linha++){
-            soma += matriz[linha][coluna];
-        }
-        matriz[60][coluna] = soma;
+    printf("\n");
     }
 }
 
-    void imprimir(int matriz[61][10]){
-        for (int linha = 0; linha < 61; linha++){
-            for (int coluna = 0; coluna < 10; coluna++){
-                printf("[%d] ", matriz[linha][coluna]);
-            }
-        }
-        
+void somarColunas(int matriz[61][10]){
+    //zerar
+    for(int j  = 0; j < 10; j++){
+        matriz[60][j] = 0;
     }
+    for(int j  = 0; j < 10; j++){
+        for(int i  = 0; i < 60; i++){
+            matriz[60][j] += matriz[i][j]; 
+        }
+    }
+}
+
+main(){
+    int matriz [61][10];
+
+    for(int i = 0; i < 61; i++){
+        for(int j = 0; j < 10; j++){
+        matriz[i][j] = i * 10 + j; 
+    }
+}
+somarColunas(matriz);
+imprimir(matriz);
+}

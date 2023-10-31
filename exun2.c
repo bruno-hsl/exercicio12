@@ -1,20 +1,22 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void calcularLocacoesGratuitas(const int A[], int locacoesGratuitas[], int tamanho) {
-    for (int i = 0; i < tamanho; i++){
-        locacoesGratuitas[i] = A[i] / 15;
+void totalGratuitas(int locacoes[500], int locacoesGratuitas[500]){
+    for(int i = 0; i < 500; i++){
+    locacoesGratuitas[i] =  locacoes[i]/15;
     }
-}
+} 
 
-int main(){
-    int A[500];
-    int locacoesGratuitas[500];
+main(){
+    int locacoes[500], locacoesGratuitas[500];
+    int i;
 
-    calcularLocacoesGratuitas(A, locacoesGratuitas, 500);
-
-    for (int i = 0; i < 500; i++) {
-        printf("\nCliente [%d] tem direito a [%d] locacoes gratuitas",i + 1, locacoesGratuitas[i]);
+    for(i = 0; i < 500; i++){
+        locacoes[i] = rand() % 100 + 1;
     }
+    totalGratuitas(locacoes, locacoesGratuitas);
 
-    return 0;
+     for(i = 0; i < 10; i++){
+        printf("%d\n", locacoesGratuitas[i]);
+    }
 }

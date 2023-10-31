@@ -1,21 +1,39 @@
 #include <stdio.h>
 
-void idadeAnosMesesDias(int idadeEmAnos){
-
-int idadeEmMeses = idadeEmAnos * 12;
-int idadeEmDias = idadeEmAnos * 365;
-
-printf("\nIdade: %d", idadeEmAnos);
-printf("\nIdade em Meses: %d", idadeEmMeses);
-printf("\nIdade em dias: %d", idadeEmDias);
+//funcao para retornar total de dias do mes
+int diasNoMes(int mes){
+    int diasMes[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    return diasMes[mes - 1];
 }
 
-int main(){
-    int idade;
+void calcularIdade(int diaNas, int mesNas, int anoNasc, int ano, int mes, int dia){
+    int tanos, tdias, tmeses;
+    if(dia >= diaNas){
+        tdias = dia - diaNas;
+    }else{
+        tdias = dia + diasNoMes(mesNas) - diaNas;
+        mes--;
+    }
 
-    printf("Digite sua idade: ");
-    scanf("%d", &idade);
+    if(mes >= mesNas){
+        tmeses = mes + 12 - mesNas;
+    }else(
+        tmeses = mes + 12 - mesNas;
+        ano--;
+    )
+    tanos = ano - anoNasc;
 
-    idadeAnosMesesDias(idade);
-    return 0;
+    printf("Idade: %d anos, %d meses, %d dias", tanos, tmeses, tdias);
+}
+
+main(){
+    int dia, ano, mes;
+    int diaNas, anoNasc, mesNas;
+    printf("Digite a data de nascimento: dd mm aa");
+    scanf("%d %d %d", &diaNas, &mesNas, &anoNasc);
+
+    printf("Digite a data atual: dd mm aa");
+    scanf("%d %d %d", &dia, &mes, &ano);
+
+    calcularIdade(diaNas, mesNas, anoNasc, dia, mes, ano);
 }
